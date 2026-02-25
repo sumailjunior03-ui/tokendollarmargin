@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Token-to-Dollar Margin Calculator — Gross Margin & Breakeven for AI APIs</title>
+  <meta name="description" content="Enter your model, token usage, and pricing. Get gross margin and breakeven users instantly. Built for AI founders and developers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <h1>TokenDollarMargin<span class="dot">.com</span></h1>
+        <p>Token usage → gross margin + breakeven, instantly</p>
+      </div>
+      <nav>
+        <a href="index.html" class="active">Calculator</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="legal.html">Legal</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+
+    <!-- Ad slot (hidden until filled) -->
+    <div class="ad-slot" aria-label="Advertisement" role="complementary">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7744853829365165"
+           data-ad-slot="0000000000"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+
+    <div class="grid">
+
+      <!-- ── LEFT: Inputs ───────────────────────── -->
+      <section class="card">
+        <h2>Enter your numbers</h2>
+        <p>Results update instantly. All calculations run in your browser.</p>
+
+        <!-- Model -->
+        <p class="section-label">Model</p>
+        <label for="model">LLM Model</label>
+        <select id="model"></select>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="showAdvanced" />
+          <label for="showAdvanced">Show advanced models</label>
+        </div>
+
+        <p class="partner-link">Are you a model provider? <a href="contact.html">Partner with us</a></p>
+
+        <!-- Custom pricing row (hidden unless Custom selected) -->
+        <div id="custom-row" style="display:none;">
+          <div class="two-col">
+            <div>
+              <label for="cin">Input price <span class="input-hint">per 1M tokens</span></label>
+              <input type="text" inputmode="decimal" id="cin" placeholder="e.g. 2.50" />
+            </div>
+            <div>
+              <label for="cout">Output price <span class="input-hint">per 1M tokens</span></label>
+              <input type="text" inputmode="decimal" id="cout" placeholder="e.g. 10.00" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Usage -->
+        <p class="section-label">Usage per user / month</p>
+        <label for="requests-per-user">Requests <span class="input-hint">per user / month</span></label>
+        <input type="text" inputmode="decimal" id="requests-per-user" placeholder="e.g. 100" />
+
+        <div class="two-col">
+          <div>
+            <label for="tokens-in">Input tokens <span class="input-hint">per request</span></label>
+            <input type="text" inputmode="decimal" id="tokens-in" placeholder="e.g. 500" />
+          </div>
+          <div>
+            <label for="tokens-out">Output tokens <span class="input-hint">per request</span></label>
+            <input type="text" inputmode="decimal" id="tokens-out" placeholder="e.g. 300" />
+          </div>
+        </div>
+
+        <!-- Revenue -->
+        <p class="section-label">Revenue</p>
+        <label for="price-per-user">Price per user <span class="input-hint">/ month (USD)</span></label>
+        <input type="text" inputmode="decimal" id="price-per-user" placeholder="e.g. 20.00" />
+
+        <!-- Costs -->
+        <p class="section-label">Costs</p>
+        <label for="fixed-costs">Fixed monthly costs <span class="input-hint">hosting, tools, etc. (USD)</span></label>
+        <input type="text" inputmode="decimal" id="fixed-costs" placeholder="e.g. 500" />
+
+        <label for="variable-other">Other variable cost <span class="input-hint">per user / month — optional</span></label>
+        <input type="text" inputmode="decimal" id="variable-other" placeholder="e.g. 0.50" />
+
+        <!-- Optional N -->
+        <p class="section-label">Optional</p>
+        <label for="optional-n">See total API cost at N users <span class="input-hint">optional</span></label>
+        <input type="text" inputmode="decimal" id="optional-n" placeholder="e.g. 1000" />
+
+        <p class="mini">Disclaimer: Results are informational estimates based solely on the numbers you enter. Taxes, infrastructure variance, and other costs are not included. Verify with official sources before making decisions.</p>
+      </section>
+
+      <!-- ── RIGHT: Output + Info ───────────────── -->
+      <aside>
+
+
+        <!-- Ad slot (hidden until filled) -->
+        <div class="ad-slot ad-slot-tight" aria-label="Advertisement" role="complementary">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-7744853829365165"
+               data-ad-slot="0000000000"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
+
+
+        <!-- Results card -->
+        <div class="card" style="margin-bottom:16px;">
+          <h2>Results</h2>
+
+          <div class="result-empty" id="result-empty">
+            Fill in model and usage to see your margin.
+          </div>
+
+          <div class="result" id="result" style="display:none;">
+            <div class="result-row">
+              <span class="result-key">API cost / user / mo</span>
+              <span class="result-val" id="out-api-cost">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-key">Total variable cost / user / mo</span>
+              <span class="result-val" id="out-var-cost">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-key">Gross profit / user / mo</span>
+              <span class="result-val" id="out-gp">—</span>
+            </div>
+            <div class="result-row headline">
+              <span class="result-key">Gross margin</span>
+              <span class="result-val" id="out-gm">—</span>
+            </div>
+            <div class="result-row breakeven">
+              <span class="result-key">Breakeven users</span>
+              <span class="result-val" id="out-be">—</span>
+            </div>
+            <div class="result-row" id="out-total-n-row" style="display:none;">
+              <span class="result-key">Total API cost @ N</span>
+              <span class="result-val" id="out-total-n">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info card -->
+        <div class="card">
+          <h2>What this calculates</h2>
+
+          <div class="info-block">
+            <p>Enter your model, token counts, and pricing. This tool outputs your <strong>gross margin per user</strong> and the <strong>number of users needed to cover fixed costs.</strong> No projections, no advice — just the math.</p>
+          </div>
+
+          <p class="section-label">Formulas used</p>
+          <div class="formula-block">
+API cost/user = R × (Tin × Cin + Tout × Cout)<br>
+Var cost/user = API cost + V<br>
+Gross profit  = P − Var cost<br>
+Gross margin  = Gross profit ÷ P<br>
+Breakeven     = ⌈F ÷ Gross profit⌉
+          </div>
+
+          <div class="sep"></div>
+          <p class="mini">Model prices sourced from provider documentation. Prices change — verify against your provider's current pricing page before making decisions.</p>
+          <p class="mini">No accounts, no tracking, no subscriptions. Runs entirely in your browser.</p>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer class="foot">
+      <div class="sep"></div>
+      <div class="network-links related-tools"></div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+        <a href="legal.html">Legal</a> &nbsp;|&nbsp;
+        <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">© <span id="year"></span> TokenDollarMargin.com</div>
+      <p class="sponsor-line">Partnerships: <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a></p>
+    </footer>
+
+  </div>
+
+  <script src="models.js"></script>
+  <script src="calc.js"></script>
+  <script src="network.js"></script>
+  <script src="ads.js"></script>
+</body>
+</html>

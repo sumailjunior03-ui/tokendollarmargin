@@ -3,11 +3,12 @@
    All sites update automatically. */
 
 window.CALCHQ_NETWORK = [
-  { name: "HourlyToSalary.com",        url: "https://hourlytosalary.com" },
-  { name: "BizDayChecker.com",         url: "https://bizdaychecker.com" },
-  { name: "BankCutoffChecker.com",     url: "https://bankcutoffchecker.com" },
-  { name: "SalaryVsInflation.com",     url: "https://salaryvsinflation.com" },
-  { name: "TokenDollarMargin.com",     url: "https://tokendollarmargin.com" },
+  { name: "BizDayChecker.com", url: "https://bizdaychecker.com" },
+  { name: "BankCutoffChecker.com", url: "https://bankcutoffchecker.com" },
+  { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" },
+  { name: "hourly2salarycalc.com", url: "https://hourly2salarycalc.com" },
+  { name: "TokenDollarMargin.com", url: "https://tokendollarmargin.com" },
+  { name: "CalcHQ.com", url: "https://calc-hq.com" },
 ];
 
 (function () {
@@ -21,10 +22,18 @@ window.CALCHQ_NETWORK = [
       });
       if (!sites.length) return;
       let html = "<strong>Related Tools:</strong> ";
-      html += sites.map(function (site) {
-        return '<a href="' + site.url + '" target="_blank" rel="noopener">' + site.name + "</a>";
-      }).join(" &nbsp;•&nbsp; ");
+      html += sites
+        .map(function (site) {
+          return (
+            '<a href="' +
+            site.url +
+            '" target="_blank" rel="noopener">' +
+            site.name +
+            "</a>"
+          );
+        })
+        .join(" &nbsp;•&nbsp; ");
       container.innerHTML = html;
     });
   });
-}());
+})();

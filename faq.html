@@ -1,88 +1,158 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FAQ — TokenDollarMargin.com</title>
-  <meta name="description" content="Frequently asked questions about the Token-to-Dollar Margin Calculator." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <h1>TokenDollarMargin<span class="dot">.com</span></h1>
-        <p>Token usage → gross margin + breakeven, instantly</p>
-      </div>
-      <nav>
-        <a href="index.html">Calculator</a>
-        <a href="faq.html" class="active">FAQ</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="legal.html">Legal</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165"
+            crossorigin="anonymous"
+        ></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>FAQ — TokenDollarMargin.com</title>
+        <meta
+            name="description"
+            content="Frequently asked questions about the Token-to-Dollar Margin Calculator."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <div class="brand">
+                    <h1>TokenDollarMargin<span class="dot">.com</span></h1>
+                    <p>Token usage → gross margin + breakeven, instantly</p>
+                </div>
+                <nav>
+                    <a href="index.html">Calculator</a>
+                    <a href="faq.html" class="active">FAQ</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="legal.html">Legal</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </header>
 
+            <!-- Sponsor banner (inactive — enable when sponsor confirmed) -->
+            <div
+                class="sponsor-banner"
+                style="display: none"
+                aria-hidden="true"
+            >
+                <span class="sponsor-label">Sponsors</span>
+                <span class="sponsor-content"></span>
+            </div>
 
-    <!-- Ad slot (hidden until filled) -->
-    <div class="ad-slot" aria-label="Advertisement" role="complementary">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7744853829365165"
-           data-ad-slot="0000000000"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
+            <!-- Ad slot (hidden until filled) -->
+            <div
+                class="ad-slot"
+                aria-label="Advertisement"
+                role="complementary"
+            >
+                <ins
+                    class="adsbygoogle"
+                    style="display: block"
+                    data-ad-client="ca-pub-7744853829365165"
+                    data-ad-slot="0000000000"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            </div>
 
+            <div class="card legal">
+                <h2>Frequently Asked Questions</h2>
 
-    <div class="card legal">
-      <h2>Frequently Asked Questions</h2>
+                <h3>What does this tool calculate?</h3>
+                <p>
+                    It answers one question: given your model pricing, token
+                    usage, and what you charge users, what is your gross margin
+                    per user and how many users do you need to cover your fixed
+                    costs?
+                </p>
 
-      <h3>What does this tool calculate?</h3>
-      <p>It answers one question: given your model pricing, token usage, and what you charge users, what is your gross margin per user and how many users do you need to cover your fixed costs?</p>
+                <h3>What does it not calculate?</h3>
+                <p>
+                    This tool does not calculate LTV, CAC, churn, runway, or
+                    investment projections. It is a gross margin and breakeven
+                    calculator — nothing more.
+                </p>
 
-      <h3>What does it not calculate?</h3>
-      <p>This tool does not calculate LTV, CAC, churn, runway, or investment projections. It is a gross margin and breakeven calculator — nothing more.</p>
+                <h3>What are "requests per user / month"?</h3>
+                <p>
+                    The number of times a single user calls your AI feature in a
+                    month. If a user sends 5 chat messages per day and your app
+                    runs for 30 days, that's roughly 150 requests.
+                </p>
 
-      <h3>What are "requests per user / month"?</h3>
-      <p>The number of times a single user calls your AI feature in a month. If a user sends 5 chat messages per day and your app runs for 30 days, that's roughly 150 requests.</p>
+                <h3>What are input and output tokens?</h3>
+                <p>
+                    Input tokens are the tokens in your prompt (system prompt +
+                    user message). Output tokens are the tokens in the model's
+                    response. Providers charge different rates for each. Enter
+                    the average per request.
+                </p>
 
-      <h3>What are input and output tokens?</h3>
-      <p>Input tokens are the tokens in your prompt (system prompt + user message). Output tokens are the tokens in the model's response. Providers charge different rates for each. Enter the average per request.</p>
+                <h3>Are the model prices up to date?</h3>
+                <p>
+                    Prices are sourced from provider documentation and updated
+                    periodically, but they change. Always verify against your
+                    provider's current pricing page before making decisions. Use
+                    the Custom option to enter your own figures.
+                </p>
 
-      <h3>Are the model prices up to date?</h3>
-      <p>Prices are sourced from provider documentation and updated periodically, but they change. Always verify against your provider's current pricing page before making decisions. Use the Custom option to enter your own figures.</p>
+                <h3>What is "other variable cost per user"?</h3>
+                <p>
+                    Any non-API cost that scales with users — for example,
+                    third-party data lookups, per-user storage fees, or support
+                    costs. Leave it at 0 if you only have API costs.
+                </p>
 
-      <h3>What is "other variable cost per user"?</h3>
-      <p>Any non-API cost that scales with users — for example, third-party data lookups, per-user storage fees, or support costs. Leave it at 0 if you only have API costs.</p>
+                <h3>What is the breakeven number?</h3>
+                <p>
+                    The minimum number of paying users at your current pricing
+                    where your gross profit covers your fixed monthly costs. If
+                    your gross profit per user is zero or negative, breakeven is
+                    not reachable at that pricing.
+                </p>
 
-      <h3>What is the breakeven number?</h3>
-      <p>The minimum number of paying users at your current pricing where your gross profit covers your fixed monthly costs. If your gross profit per user is zero or negative, breakeven is not reachable at that pricing.</p>
+                <h3>Does this tool store my data?</h3>
+                <p>
+                    No. All calculations run entirely in your browser. Nothing
+                    is sent to a server.
+                </p>
+            </div>
 
-      <h3>Does this tool store my data?</h3>
-      <p>No. All calculations run entirely in your browser. Nothing is sent to a server.</p>
-    </div>
-
-    <footer class="foot">
-      <div class="sep"></div>
-      <div class="network-links related-tools"></div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
-        <a href="legal.html">Legal</a> &nbsp;|&nbsp;
-        <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-meta">© <span id="year"></span> TokenDollarMargin.com</div>
-      <p class="sponsor-line">Partnerships: <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a></p>
-    </footer>
-  </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="network.js"></script>
-  <script src="ads.js"></script>
-</body>
+            <footer class="foot">
+                <div class="sep"></div>
+                <div class="network-links related-tools"></div>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+                    <a href="legal.html">Legal</a> &nbsp;|&nbsp;
+                    <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-meta">
+                    © <span id="year"></span> TokenDollarMargin.com
+                </div>
+                <p class="sponsor-line">
+                    Partnerships:
+                    <a href="mailto:partnerships@calc-hq.com"
+                        >partnerships@calc-hq.com</a
+                    >
+                </p>
+            </footer>
+        </div>
+        <script>
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+        </script>
+        <script src="network.js"></script>
+        <script src="ads.js"></script>
+        <script src="sponsor.js"></script>
+    </body>
 </html>

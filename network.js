@@ -7,7 +7,8 @@ window.CALCHQ_NETWORK = [
   { name: "BankCutoffChecker.com", url: "https://bankcutoffchecker.com" },
   { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" },
   { name: "hourly2salarycalc.com", url: "https://hourly2salarycalc.com" },
-  { name: "TokenDollarMargin.com", url: "https://tokentodollarmargin.com" },
+  { name: "TokenToDollarMargin.com", url: "https://tokentodollarmargin.com" },
+  { name: "PayrollDateChecker.com", url: "https://payrolldatechecker.com" },
 ];
 
 (function () {

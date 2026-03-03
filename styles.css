@@ -273,12 +273,19 @@ select:focus {
 }
 
 /* Ad slots — collapsed until an ad actually fills the slot */
-.ad-slot {
-    /* no margin, no height by default — prevents dead space when no ad serves */
+.ad-slot.is-off {
+    display: none;
 }
 .ad-slot.is-filled {
+    display: block;
     margin: 16px 0;
     min-height: 90px;
+}
+
+/* Sponsor slot — hidden until activated */
+.sponsor-slot.is-off,
+.sponsor-banner.is-off {
+    display: none;
 }
 
 /* Footer */

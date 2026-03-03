@@ -1,12 +1,13 @@
 /* CalcHQ Network — Central Site Directory
-   To add a new site: add one line to NETWORK_SITES array.
-   All sites update automatically. */
+   To add a new site: add one line to CALCHQ_NETWORK array.
+   All sites update automatically across the utility network. */
 
 window.CALCHQ_NETWORK = [
-  { name: "BizDayChecker.com", url: "https://bizdaychecker.com" },
-  { name: "BankCutoffChecker.com", url: "https://bankcutoffchecker.com" },
-  { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" },
-  { name: "hourly2salarycalc.com", url: "https://hourly2salarycalc.com" },
+  { name: "Calc-HQ",                url: "https://calc-hq.com" },
+  { name: "BizDayChecker.com",      url: "https://bizdaychecker.com" },
+  { name: "BankCutoffChecker.com",  url: "https://bankcutoffchecker.com" },
+  { name: "SalaryVsInflation.com",  url: "https://salaryvsinflation.com" },
+  { name: "hourly2salarycalc.com",  url: "https://hourly2salarycalc.com" },
   { name: "TokenToDollarMargin.com", url: "https://tokentodollarmargin.com" },
   { name: "PayrollDateChecker.com", url: "https://payrolldatechecker.com" },
 ];
@@ -18,7 +19,12 @@ window.CALCHQ_NETWORK = [
     const currentDomain = window.location.hostname.replace("www.", "");
     containers.forEach(function (container) {
       const sites = window.CALCHQ_NETWORK.filter(function (site) {
-        return !site.url.includes(currentDomain);
+        try {
+          const u = new URL(site.url);
+          return u.hostname.replace("www.", "") !== currentDomain;
+        } catch (e) {
+          return true;
+        }
       });
       if (!sites.length) return;
       let html = "<strong>Related Tools:</strong> ";

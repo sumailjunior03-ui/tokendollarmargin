@@ -1,9 +1,13 @@
-/* CalcHQ — ads.js
-   Purpose: keep AdSense placeholders present, but hide them until an ad is actually rendered
-   to avoid dead space. Safe no-op if ads are not yet serving.
+/* CalcHQ — ads.js (v4)
+   Keeps AdSense rails present but COLLAPSED by default (no empty space).
+   - If ADS_ACTIVE is false: no-op; everything stays hidden.
+   - If ADS_ACTIVE is true: requests ads and only reveals a slot once an iframe is injected.
 */
 (function () {
-  function tryPush(ins) {
+  var cfg = (window.CALCHQ_CONFIG || {});
+  if (!cfg.ADS_ACTIVE) return;
+
+  function tryPush() {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       return true;
@@ -12,40 +16,56 @@
     }
   }
 
-  function markFilled(wrapper) {
-    if (!wrapper.classList.contains('is-filled')) wrapper.classList.add('is-filled');
+  function reveal(wrapper) {
+    wrapper.classList.remove('is-off');
+    wrapper.classList.add('is-filled');
   }
 
-  function initOne(wrapper) {
+  function applyCfg(ins, slotId) {
+    if (cfg.ADSENSE_CLIENT) ins.setAttribute('data-ad-client', cfg.ADSENSE_CLIENT);
+    if (slotId) ins.setAttribute('data-ad-slot', slotId);
+  }
+
+  function initSlot(wrapper, slotId) {
     var ins = wrapper.querySelector('ins.adsbygoogle');
     if (!ins) return;
 
-    // Attempt to request an ad (will quietly fail if not approved / blocked)
-    tryPush(ins);
+    applyCfg(ins, slotId);
 
-    // If an iframe already exists, show now
+    // Request an ad (quietly fails if not approved / blocked)
+    tryPush();
+
+    // If iframe exists immediately, reveal now
     if (ins.querySelector('iframe')) {
-      markFilled(wrapper);
+      reveal(wrapper);
       return;
     }
 
-    // Observe for the moment an iframe appears
+    // Reveal only when an iframe appears
     var obs = new MutationObserver(function () {
       if (ins.querySelector('iframe')) {
-        markFilled(wrapper);
+        reveal(wrapper);
         try { obs.disconnect(); } catch (e) {}
       }
     });
     obs.observe(ins, { childList: true, subtree: true });
 
-    // Defensive: if ad fills via async layout, re-check later
+    // Defensive re-check
     setTimeout(function () {
-      if (ins.querySelector('iframe')) markFilled(wrapper);
-    }, 2000);
+      if (ins.querySelector('iframe')) reveal(wrapper);
+    }, 1200);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var slots = document.querySelectorAll('.ad-slot');
-    for (var i = 0; i < slots.length; i++) initOne(slots[i]);
-  });
+  // Slot mapping
+  var slot1 = cfg.AD_SLOT_1 || "";
+  var slot2 = cfg.AD_SLOT_2 || "";
+
+  // If no slots configured yet, keep everything hidden
+  if (!slot1 && !slot2) return;
+
+  var ad1 = document.getElementById('ad1');
+  var ad2 = document.getElementById('ad2');
+
+  if (ad1 && slot1) initSlot(ad1, slot1);
+  if (ad2 && slot2) initSlot(ad2, slot2);
 })();

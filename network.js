@@ -26,9 +26,11 @@ window.CALCHQ_NETWORK = [
       const sites = window.CALCHQ_NETWORK.filter(function (site) {
         try {
           const u = new URL(site.url);
-          return u.hostname.replace("www.", "") !== currentDomain;
+          const host = u.hostname.replace("www.", "");
+          if (host === "calc-hq.com") return false;
+          return host !== currentDomain;
         } catch (e) {
-          return true;
+          return false;
         }
       });
       if (!sites.length) return;
